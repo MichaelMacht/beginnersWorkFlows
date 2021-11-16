@@ -31,28 +31,28 @@ jobs:
           collection: ${{ github.workspace }}/test/Postman/TestApi.json
           reporters: cli 
   
-loadTest:
-  name: K6
-  runs-on: ubuntu-latest
+  loadTest:
+    name: K6
+    runs-on: ubuntu-latest
     steps:
-    - name: Code checkout
-      uses: actions/checkout@v2
-    - name: K6 Run
-      uses: grafana/k6-action@v0.2.0
-      with:
-        filename: ${{ github.workspace }}/test/k6/loadtest.js
+      - name: Code checkout
+        uses: actions/checkout@v2
+      - name: K6 Run
+        uses: grafana/k6-action@v0.2.0
+        with:
+          filename: ${{ github.workspace }}/test/k6/loadtest.js
         
-robotGuiTest:
-  name: Robot GUI test
-  runs-on: ubuntu-latest
+  robotGuiTest:
+    name: Robot GUI test
+    runs-on: ubuntu-latest
     steps:
-    - name: Mam rad banany
-      uses: actions/checkout@v2
-    - name: Robot GUI test run
-      run: |
-        docker run --shm-size=1g \
-        -v ${{ github.worspace }}/test.RobotframeWork/:/opt/robotframework/reports:Z \
-        -v ${{ github.worspace }}/test.RobotframeWork/:/opt/robotframework/tests:Z \
-        -e BROWSER=chrome \
-        --user=1001:1001 \
-        ppodgorsek/robot-framework:latest
+      - name: Mam rad banany
+        uses: actions/checkout@v2
+      - name: Robot GUI test run
+        run: |
+          docker run --shm-size=1g \
+          -v ${{ github.worspace }}/test.RobotframeWork/:/opt/robotframework/reports:Z \
+          -v ${{ github.worspace }}/test.RobotframeWork/:/opt/robotframework/tests:Z \
+          -e BROWSER=chrome \
+          --user=1001:1001 \
+          ppodgorsek/robot-framework:latest
