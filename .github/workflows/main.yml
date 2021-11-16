@@ -6,8 +6,8 @@ on:
     
 jobs:
   World:
-    runs-on:ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
-      - users: actions/chceckout@v2
+      - uses: actions/checkout@v2
       - run: echo Hello world
   
