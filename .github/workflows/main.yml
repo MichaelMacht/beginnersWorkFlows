@@ -50,7 +50,7 @@ robotGuiTest:
       uses: actions/checkout@v2
     - name: Robot GUI test run
       run: |
-        docker run ==shm=size=1g \
+        docker run --shm-size=1g \
         -v ${{ github.worspace }}/test.RobotframeWork/:/opt/robotframework/reports:Z \
         -v ${{ github.worspace }}/test.RobotframeWork/:/opt/robotframework/tests:Z \
         -e BROWSER=chrome \
