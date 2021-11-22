@@ -41,18 +41,18 @@ jobs:
         uses: grafana/k6-action@55845c6c2e400af4356c84e5b514aeabb1bfdbd4
         with:
           filename: ${{ github.workspace }}/test/k6/loadtest.js
-        
+      
   robotGuiTest:
-    name: Robot GUI test
+    name: Robot GUI Test
     runs-on: ubuntu-latest
     steps:
-      - name: Mam rad banany
+      - name: Mám rád banány
         uses: actions/checkout@v2
-      - name: Robot GUI test run
+      - name: Robot gui test run
         run: |
           docker run --shm-size=1g \
-          -v ${{ github.worspace }}/test.RobotframeWork/:/opt/robotframework/reports:Z \
-          -v ${{ github.worspace }}/test.RobotframeWork/:/opt/robotframework/tests:Z \
+          -v ${{ github.workspace }}/test/RobotFrameWork:/opt/robotframework/reports:Z \
+          -v ${{ github.workspace }}/test/RobotFrameWork:/opt/robotframework/tests:Z \
           -e BROWSER=chrome \
           --user=1001:1001 \
           ppodgorsek/robot-framework:latest
